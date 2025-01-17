@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://x8mo7dhi2jfd"]
+
+[ext_resource type="Script" path="res://weapon.gd" id="1_7qtry"]
+
+[node name="Weapon" type="Node2D"]
+position = Vector2(278, 628)
+script = ExtResource("1_7qtry")
