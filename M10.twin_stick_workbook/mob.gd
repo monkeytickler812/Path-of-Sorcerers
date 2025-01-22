@@ -1,6 +1,6 @@
 class_name Mob extends CharacterBody2D
 
-
+@export var health := 3
 @export var SPEED := 600.0
 @export var acceleration := 450.0
 @export var drag_factor := 1.5
@@ -31,3 +31,8 @@ func _physics_process(delta: float) -> void:
 
 func get_global_player_position() -> Vector2:
 	return get_tree().root.get_node("Test/Player").global_position
+
+func take_damage():
+	health -= 1
+	if health == 0:
+		queue_free()
