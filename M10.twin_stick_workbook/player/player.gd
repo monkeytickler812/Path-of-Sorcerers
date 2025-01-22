@@ -1,7 +1,8 @@
 class_name Player extends CharacterBody2D
 
-@export var speed := 460.0
-@export var drag_factor := 10.0
+@export var speed := 400
+@export var acceleration := 3.0
+@export var drag_factor := 12.0
 
 const SPRITE_RIGHT := preload("res://player/godot_right.png")
 const SPRITE_DOWN := preload("res://player/godot_bottom.png")
