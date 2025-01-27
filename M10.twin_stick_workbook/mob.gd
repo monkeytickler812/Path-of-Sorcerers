@@ -4,10 +4,13 @@ class_name Mob extends CharacterBody2D
 @export var SPEED := 600.0
 @export var acceleration := 450.0
 @export var drag_factor := 1.5
-var _player: Player = null
 @onready var _detection: Area2D = %Detection
+@onready var _hit_box: Area2D = %HitBox
+
+var _player: Player = null
 
 func _ready() -> void:
+	const damage = 1.0
 	_detection.body_entered.connect(func (body: Node) -> void:
 		if body is Player:
 			_player = body
@@ -15,6 +18,10 @@ func _ready() -> void:
 	_detection.body_exited.connect(func (body: Node) -> void:
 		if body is Player:
 			_player = null
+	)
+	_hit_box.body_entered.connect(func (body: Node) -> void:
+		if body is Player:
+			body.health -= damage
 	)
 
 func _physics_process(delta: float) -> void:

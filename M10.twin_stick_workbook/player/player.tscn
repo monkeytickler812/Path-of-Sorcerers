@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwxm0v4y5uwd2"]
+[gd_scene load_steps=10 format=3 uid="uid://dwxm0v4y5uwd2"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_6bx1v"]
 [ext_resource type="Texture2D" uid="uid://bw03btxpkxde4" path="res://player/godot_bottom.png" id="2_hupws"]
@@ -9,6 +9,33 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5lq7"]
 radius = 19.105
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sn81y"]
+bg_color = Color(0.129558, 0.129559, 0.129558, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.542656, 0.544686, 0.509386, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qq4ka"]
+bg_color = Color(0, 0.654381, 0.107736, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.110538, 0.543016, 2.88785e-07, 0.6)
+shadow_size = 2
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -50,3 +77,14 @@ rotation = 0.31765
 scale = Vector2(0.85, 0.85)
 texture = ExtResource("5_eortb")
 flip_v = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -63.0
+offset_top = -127.0
+offset_right = 65.0
+offset_bottom = -107.0
+theme_override_styles/background = SubResource("StyleBoxFlat_sn81y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qq4ka")
+value = 100.0
+show_percentage = false

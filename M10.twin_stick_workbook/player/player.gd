@@ -3,6 +3,9 @@ class_name Player extends CharacterBody2D
 @export var speed := 400
 @export var acceleration := 3.0
 @export var drag_factor := 12.0
+@export var max_health := 5
+
+var health := max_health: set = set_health
 
 const SPRITE_RIGHT := preload("res://player/godot_right.png")
 const SPRITE_DOWN := preload("res://player/godot_bottom.png")
@@ -15,6 +18,13 @@ const DOWN_RIGHT = Vector2.DOWN + Vector2.RIGHT
 const DOWN_LEFT = Vector2.DOWN + Vector2.LEFT
 
 @onready var _skin: Sprite2D = %Skin
+@onready var _health_bar: ProgressBar = %HealthBar
+
+
+func _ready() -> void:
+	_health_bar.max_value = max_health
+	_health_bar.value = health
+
 
 func _physics_process(delta: float) -> void:
 	var move_direction := Input.get_vector("left", "right", "up", "down")
@@ -36,3 +46,10 @@ func _physics_process(delta: float) -> void:
 	if direction_discrete.length() > 0:
 		_skin.flip_h = direction_discrete.x < 0.0
 	move_and_slide()
+
+func set_health(new_health: int) -> void:
+	var previous_health := health
+	health = clampi(new_health, 0, max_health)
+	_health_bar.value = health
+	if health == 0:
+		queue_free()
