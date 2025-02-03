@@ -42,3 +42,6 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3dmee")
+
+[node name="DamageTimer" type="Timer" parent="."]
+unique_name_in_owner = true
