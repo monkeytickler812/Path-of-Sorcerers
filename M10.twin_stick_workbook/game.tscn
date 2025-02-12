@@ -1,0 +1,163 @@
+[gd_scene load_steps=31 format=4 uid="uid://o5ach3rumfoj"]
+
+[ext_resource type="PackedScene" uid="uid://cu2rb5dl4ljte" path="res://levels/rooms/room_a.tscn" id="1_igw4r"]
+[ext_resource type="PackedScene" uid="uid://wdey00p3syru" path="res://levels/background/background_blue_sky.tscn" id="1_kj162"]
+[ext_resource type="PackedScene" uid="uid://bisngg0158kwi" path="res://pickups/chest.tscn" id="2_d1x2p"]
+[ext_resource type="PackedScene" uid="uid://dgayuh42w4v6u" path="res://levels/rooms/room_b.tscn" id="3_1du1t"]
+[ext_resource type="Script" path="res://pickups/item_resource.gd" id="3_mh1xe"]
+[ext_resource type="PackedScene" uid="uid://cq0mmphkbrvmm" path="res://levels/rooms/room_c.tscn" id="4_112qr"]
+[ext_resource type="Script" path="res://pickups/item_healing.gd" id="4_ax60w"]
+[ext_resource type="AudioStream" uid="uid://o3ra7o263286" path="res://pickups/pickup_health.wav" id="5_dv305"]
+[ext_resource type="PackedScene" uid="uid://c3fl3stluv0gn" path="res://levels/bridges.tscn" id="5_kd77f"]
+[ext_resource type="Texture2D" uid="uid://be8lmb157qflx" path="res://pickups/pickup_health.png" id="6_1g82y"]
+[ext_resource type="TileSet" uid="uid://crkgfdw1y80hc" path="res://levels/rooms/tilesets/tileset_bridges.tres" id="6_1wc5o"]
+[ext_resource type="PackedScene" uid="uid://dwxm0v4y5uwd2" path="res://player/player.tscn" id="7_a4myq"]
+[ext_resource type="PackedScene" uid="uid://dlxjrgals3rg2" path="res://levels/invisible_walls.tscn" id="7_ogh7s"]
+[ext_resource type="PackedScene" uid="uid://dgc4kifpyewu6" path="res://mobs/mob.tscn" id="8_3fka3"]
+[ext_resource type="PackedScene" uid="uid://bv5vbl02qhab3" path="res://pickups/pickup.tscn" id="9_qi6ul"]
+[ext_resource type="Texture2D" uid="uid://cemsu0d7gpb1d" path="res://levels/props/statue_hammer.png" id="16_5oe6y"]
+[ext_resource type="Texture2D" uid="uid://dmctowcr0y4a2" path="res://levels/props/grass_rock_3.png" id="17_3wmhh"]
+[ext_resource type="Texture2D" uid="uid://dgaeuhfuhwle2" path="res://levels/props/gems_blue_1.png" id="17_d67w8"]
+[ext_resource type="Texture2D" uid="uid://b1mhee1wq4skl" path="res://levels/props/gems_silver_1.png" id="18_dpwls"]
+[ext_resource type="Texture2D" uid="uid://bm8kc3p51p5yq" path="res://levels/props/grass_rock_4.png" id="18_kpi08"]
+[ext_resource type="Texture2D" uid="uid://dy278s7isnbgo" path="res://levels/props/grass_wall_1.png" id="19_2tfgt"]
+[ext_resource type="Texture2D" uid="uid://crivudiv4hm7j" path="res://levels/props/gems_yellow_4.png" id="19_dmn6r"]
+[ext_resource type="Texture2D" uid="uid://bv1j33dodlkaf" path="res://levels/props/grass_wall_2.png" id="20_n2di6"]
+[ext_resource type="Texture2D" uid="uid://dqsx4s3vbcjiv" path="res://levels/props/statue_gems.png" id="20_o5x46"]
+[ext_resource type="Texture2D" uid="uid://clb66gwfamij8" path="res://levels/props/table_medium.png" id="21_hmhvi"]
+[ext_resource type="Texture2D" uid="uid://bl7fmqsn8uu8h" path="res://levels/props/books_3.png" id="22_u5sfb"]
+[ext_resource type="Texture2D" uid="uid://bow3cti1y5kxa" path="res://levels/props/book_small.png" id="23_yk3s4"]
+[ext_resource type="Texture2D" uid="uid://dp3cwswk7h4ra" path="res://levels/props/book_tiny.png" id="24_g1cdy"]
+
+[sub_resource type="Resource" id="Resource_17xg8"]
+script = ExtResource("4_ax60w")
+healing_amount = 1
+display_name = ""
+texture = ExtResource("6_1g82y")
+sound_on_pickup = ExtResource("5_dv305")
+
+[sub_resource type="Resource" id="Resource_0k6cr"]
+script = ExtResource("4_ax60w")
+healing_amount = 1
+display_name = "health"
+texture = ExtResource("6_1g82y")
+sound_on_pickup = ExtResource("5_dv305")
+
+[node name="Game" type="Node2D"]
+
+[node name="BackgroundBlueSky" parent="." instance=ExtResource("1_kj162")]
+
+[node name="RoomA" parent="." instance=ExtResource("1_igw4r")]
+
+[node name="RoomB" parent="." instance=ExtResource("3_1du1t")]
+position = Vector2(2560, 255)
+
+[node name="RoomC" parent="." instance=ExtResource("4_112qr")]
+position = Vector2(2562, -2632)
+
+[node name="Bridges" parent="." instance=ExtResource("5_kd77f")]
+tile_map_data = PackedByteArray("AAALAAQAAAAAAAEAAAAMAAQAAAAAAAEAAAANAAQAAAAAAAEAAAARAAYAAAAAAAEAAAASAAYAAAAAAAEAAAATAAYAAAAAAAEAAAAbAAEAAAADAAEAAAAbAAAAAAADAAEAAAAbAP//AAADAAEAAAAbAP7/AAADAAEAAAAbAP3/AAABAAAAAAAdAP3/AAADAAAAAAAcAP3/AAACAAEAAAAdAPz/AAADAAEAAAAdAPr/AAADAAEAAAAdAPv/AAADAAEAAAAdAPn/AAADAAEAAAAdAPj/AAADAAEAAAAdAPf/AAADAAEAAAAdAPb/AAADAAEAAAAPAAQAAAAAAAAAAAAOAAQAAAAAAAEAAAAPAAUAAAADAAEAAAAPAAYAAAACAAAAAAAQAAYAAAAAAAEAAAA=")
+tile_set = ExtResource("6_1wc5o")
+
+[node name="InvisibleWalls" parent="." instance=ExtResource("7_ogh7s")]
+visible = false
+tile_map_data = PackedByteArray("AAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAQAAcAAAAAAAAAAAARAAcAAAAAAAAAAAASAAcAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUAAAAAAAAAAAAaAAAAAAAAAAAAAAAaAP//AAAAAAAAAAAaAP7/AAAAAAAAAAAaAP3/AAAAAAAAAAAaAPz/AAAAAAAAAAAbAPz/AAAAAAAAAAAcAPz/AAAAAAAAAAAcAPv/AAAAAAAAAAAcAPr/AAAAAAAAAAAcAPn/AAAAAAAAAAAcAPj/AAAAAAAAAAAcAPf/AAAAAAAAAAAeAPf/AAAAAAAAAAAeAPj/AAAAAAAAAAAeAPn/AAAAAAAAAAAeAPr/AAAAAAAAAAAeAPv/AAAAAAAAAAAeAPz/AAAAAAAAAAAeAP3/AAAAAAAAAAAeAP7/AAAAAAAAAAAdAP7/AAAAAAAAAAAcAP7/AAAAAAAAAAAcAP//AAAAAAAAAAAcAAAAAAAAAAAAAAA=")
+
+[node name="StatueHammer" type="Sprite2D" parent="."]
+position = Vector2(3644, 506)
+texture = ExtResource("16_5oe6y")
+
+[node name="GrassRock3" type="Sprite2D" parent="."]
+position = Vector2(1004, 262)
+texture = ExtResource("17_3wmhh")
+
+[node name="GrassRock4" type="Sprite2D" parent="."]
+position = Vector2(157, 888)
+texture = ExtResource("18_kpi08")
+
+[node name="GrassWall1" type="Sprite2D" parent="."]
+position = Vector2(3302, 1047)
+texture = ExtResource("19_2tfgt")
+
+[node name="GrassRock5" type="Sprite2D" parent="."]
+position = Vector2(2816, 908)
+texture = ExtResource("17_3wmhh")
+
+[node name="GrassWall2" type="Sprite2D" parent="."]
+position = Vector2(695, 565)
+texture = ExtResource("19_2tfgt")
+
+[node name="GrassWall3" type="Sprite2D" parent="."]
+position = Vector2(967, 955)
+texture = ExtResource("20_n2di6")
+
+[node name="GrassWall4" type="Sprite2D" parent="."]
+position = Vector2(3118, 778)
+texture = ExtResource("20_n2di6")
+
+[node name="TableMedium" type="Sprite2D" parent="."]
+position = Vector2(3059, 972)
+texture = ExtResource("21_hmhvi")
+
+[node name="Books3" type="Sprite2D" parent="."]
+position = Vector2(3059, 947)
+texture = ExtResource("22_u5sfb")
+
+[node name="BookSmall" type="Sprite2D" parent="."]
+position = Vector2(3118, 237)
+texture = ExtResource("23_yk3s4")
+
+[node name="BookSmall2" type="Sprite2D" parent="."]
+position = Vector2(3178, 242)
+texture = ExtResource("23_yk3s4")
+
+[node name="BookTiny" type="Sprite2D" parent="."]
+position = Vector2(3088, 239)
+texture = ExtResource("24_g1cdy")
+
+[node name="GemsBlue1" type="Sprite2D" parent="."]
+position = Vector2(2931, -2002)
+texture = ExtResource("17_d67w8")
+
+[node name="GemsSilver1" type="Sprite2D" parent="."]
+position = Vector2(3906, -1643)
+texture = ExtResource("18_dpwls")
+
+[node name="GemsYellow4" type="Sprite2D" parent="."]
+position = Vector2(3488, -2518)
+texture = ExtResource("19_dmn6r")
+
+[node name="StatueGems" type="Sprite2D" parent="."]
+position = Vector2(3046, -2446)
+texture = ExtResource("20_o5x46")
+
+[node name="Chest" parent="." instance=ExtResource("2_d1x2p")]
+position = Vector2(3055, 574)
+possible_items = Array[ExtResource("3_mh1xe")]([SubResource("Resource_17xg8")])
+
+[node name="Chest2" parent="." instance=ExtResource("2_d1x2p")]
+position = Vector2(3683, 826)
+
+[node name="Mob" parent="." instance=ExtResource("8_3fka3")]
+position = Vector2(543, 373)
+collision_mask = 64
+
+[node name="Mob2" parent="." instance=ExtResource("8_3fka3")]
+position = Vector2(1232, 1038)
+collision_mask = 64
+
+[node name="Mob3" parent="." instance=ExtResource("8_3fka3")]
+position = Vector2(3157, -1555)
+collision_mask = 64
+
+[node name="Mob4" parent="." instance=ExtResource("8_3fka3")]
+position = Vector2(3517, -2238)
+collision_mask = 64
+
+[node name="Pickup" parent="." instance=ExtResource("9_qi6ul")]
+position = Vector2(1235, 359)
+item = SubResource("Resource_0k6cr")
+
+[node name="Player" parent="." instance=ExtResource("7_a4myq")]
+position = Vector2(385, 1072)
+collision_mask = 64
