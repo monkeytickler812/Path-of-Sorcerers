@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=4 uid="uid://o5ach3rumfoj"]
+[gd_scene load_steps=34 format=4 uid="uid://o5ach3rumfoj"]
 
 [ext_resource type="PackedScene" uid="uid://cu2rb5dl4ljte" path="res://levels/rooms/room_a.tscn" id="1_igw4r"]
 [ext_resource type="PackedScene" uid="uid://wdey00p3syru" path="res://levels/background/background_blue_sky.tscn" id="1_kj162"]
+[ext_resource type="Script" path="res://game.gd" id="1_lh163"]
 [ext_resource type="PackedScene" uid="uid://bisngg0158kwi" path="res://pickups/chest.tscn" id="2_d1x2p"]
 [ext_resource type="PackedScene" uid="uid://dgayuh42w4v6u" path="res://levels/rooms/room_b.tscn" id="3_1du1t"]
 [ext_resource type="Script" path="res://pickups/item_resource.gd" id="3_mh1xe"]
@@ -28,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://bl7fmqsn8uu8h" path="res://levels/props/books_3.png" id="22_u5sfb"]
 [ext_resource type="Texture2D" uid="uid://bow3cti1y5kxa" path="res://levels/props/book_small.png" id="23_yk3s4"]
 [ext_resource type="Texture2D" uid="uid://dp3cwswk7h4ra" path="res://levels/props/book_tiny.png" id="24_g1cdy"]
+[ext_resource type="PackedScene" uid="uid://c6lp0tlr5ijxw" path="res://teleporter/teleporter.tscn" id="29_0apia"]
+[ext_resource type="PackedScene" uid="uid://bcrhkhkl8l4pl" path="res://end_menu.tscn" id="30_yaxfy"]
 
 [sub_resource type="Resource" id="Resource_17xg8"]
 script = ExtResource("4_ax60w")
@@ -44,6 +47,7 @@ texture = ExtResource("6_1g82y")
 sound_on_pickup = ExtResource("5_dv305")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_lh163")
 
 [node name="BackgroundBlueSky" parent="." instance=ExtResource("1_kj162")]
 
@@ -128,7 +132,7 @@ position = Vector2(3488, -2518)
 texture = ExtResource("19_dmn6r")
 
 [node name="StatueGems" type="Sprite2D" parent="."]
-position = Vector2(3046, -2446)
+position = Vector2(2974, -2537)
 texture = ExtResource("20_o5x46")
 
 [node name="Chest" parent="." instance=ExtResource("2_d1x2p")]
@@ -158,6 +162,16 @@ collision_mask = 64
 position = Vector2(1235, 359)
 item = SubResource("Resource_0k6cr")
 
+[node name="Teleporter" parent="." instance=ExtResource("29_0apia")]
+unique_name_in_owner = true
+position = Vector2(3207, -2405)
+
 [node name="Player" parent="." instance=ExtResource("7_a4myq")]
 position = Vector2(385, 1072)
 collision_mask = 64
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EndMenu" parent="CanvasLayer" instance=ExtResource("30_yaxfy")]
+unique_name_in_owner = true
+visible = false
