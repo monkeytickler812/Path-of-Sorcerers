@@ -19,7 +19,7 @@ const DOWN_LEFT = Vector2.DOWN + Vector2.LEFT
 
 @onready var _skin: Sprite2D = %Skin
 @onready var _health_bar: ProgressBar = %HealthBar
-
+@onready var _lose_menu: PanelContainer = %LoseMenu
 
 func _ready() -> void:
 	_health_bar.max_value = max_health
@@ -53,3 +53,4 @@ func set_health(new_health: int) -> void:
 	_health_bar.value = health
 	if health == 0:
 		queue_free()
+		_lose_menu.open()
